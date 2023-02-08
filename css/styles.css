@@ -1,0 +1,77 @@
+/* :root equivale ao elemento raiz do documento.
+   <html> é o elemento raiz no caso do HTML
+   Usado aqui para declarar variáveis globais */
+:root {
+    --glitched-duration: 0.9s;
+    --glitched-long-duration: 3s;
+    --pink-red: #fb6f92;
+    --pink-opacity: #ff5d8942;
+    --light-crinsom: #f56991;
+    --border-color: #59CBE8;
+    --ultra-red: #fc6c85;
+    --cyan-color: #47d6fa;
+    --hawaii-blue: #00c3e3;
+    --french-pink: #fd6c9e;
+  }
+
+  body {
+    background-color: var(--pink-red);
+    min-height: 220vh; /* vh e vw fazem referência ao viewport (área visível do site em determinada tela), vh para altura e vw para largura.
+                          Uma altura de 100vh corresponde a 100% do viewport*/
+    padding: 30px;
+  }
+
+  body * { /* O asterisco aplica estilos a todos os elementos */
+    font-family: "Advent Pro", arial ;
+  }
+
+  h1.cyberpunk {
+  font-size: 2rem;
+  line-height: 2.2rem;
+  font-weight: 200;
+  position: relative; /* Um elemento com a "position: relative" está posicionado de acordo com sua posição dentro de seu container. */
+  padding-bottom: 15px;
+}
+
+/* Estiliza um traço abaixo do título */
+h1.cyberpunk:before { /* ":before" cria um pseudo-elemento que é o primeiro filho do elemento atingido (h1.cyberpunk no caso). 
+                         É frequentemente utilizado para adicionar conteúdo decorativo à um elemento utilizando a propriedade "content" */
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    left: 2px;
+    width: 100%;
+    height: 10px;
+    background-color: #000;
+    clip-path: polygon(0px 0px, 85px 0px, 90px 5px, 100% 5px, 100% 6px, 85px 6px, 80px 10px, 0px 10px);
+}
+
+/* Estiliza a Scrollbar */
+::-webkit-scrollbar {
+    background-color: var(--pink-red);
+  }
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+  ::-webkit-scrollbar-track {
+    display: none;
+  }
+  ::-webkit-scrollbar-track-piece {
+    display: none;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--ultra-red);
+    border-bottom: 2px solid var(--border-color);
+    border-right: 2px solid var(--border-color);
+    transition: background var(--glitched-duration);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--light-crinsom);
+  }
+  ::-webkit-scrollbar-corner {
+    display: none;
+  }
+  ::-webkit-resizer {
+    display: none;
+  }
