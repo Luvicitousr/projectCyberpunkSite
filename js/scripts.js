@@ -3,6 +3,7 @@ var on = false;
 
 var update = function(){
     glitched.setAttribute('animation-name', (on) ? 'glitched' : '');
+    console.log("entrou aqui")
     on = !on;
     setTimer();
 }

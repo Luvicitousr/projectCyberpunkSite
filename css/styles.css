@@ -90,7 +90,7 @@ h1.cyberpunk:after {
 /* Aplica a animação "glitched" para o texto do parágrafo */
 p.cyberpunk.glitched, 
 h1.cyberpunk.glitched {
-  animation-name: glitched;
+  animation-name: '';
   animation-duration: calc(var(--glitched-duration) * 1.4);
   animation-iteration-count: infinite;
   animation-timing-function: linear;
