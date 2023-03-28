@@ -12,17 +12,108 @@
     --cyan-color: #47d6fa;
     --hawaii-blue: #00c3e3;
     --french-pink: #fd6c9e;
+    --purple-color: purple;
   }
 
   body {
     background-color: var(--pink-red);
-    min-height: 220vh; /* vh e vw fazem referência ao viewport (área visível do site em determinada tela), vh para altura e vw para largura.
+    max-height: 220vh; /* vh e vw fazem referência ao viewport (área visível do site em determinada tela), vh para altura e vw para largura.
                           Uma altura de 100vh corresponde a 100% do viewport*/
-    padding: 30px;
+    /* padding: 30px; */
+    margin: 0px;
   }
 
   body * { /* O asterisco aplica estilos a todos os elementos */
     font-family: "Advent Pro", arial ;
+  }
+
+  a {color: #fff;}
+
+  body, html {
+    overflow-x: hidden !important;
+  }
+  
+  /* BoxTree */
+  .boxtree {
+    --gap: 15px;
+    --border-height: 1px;
+    --padding: 5px;
+  }
+
+  @media (min-width: 600px) {
+    .boxtree {
+      --gap: 20px;
+      --border-height: 3px;
+      --padding: 10px;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .boxtree {
+      --gap: 30px;
+      --border-height: 5px;
+      --padding: 20px;
+    }
+  }
+
+  .boxtree {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: stretch;
+    gap: var(--gap);
+  }
+
+  .boxtree > div {
+    width: calc(100% - var(--gap));
+    box-sizing: border-box;
+    border: var(--border-height) dashed var(--purple-color);
+    /*border-bottom: var(--border-height) dashed var(--purple-color); */
+    padding: var(--padding);
+    color: var(--purple-color);
+    position: relative;
+  }
+
+  /* Images frames */
+  img.cyberpunk {
+    border: 30px solid #fb6f92;
+    border-left: 5px solid #fb6f92;
+    border-right: 5px solid #fb6f92;
+    border-bottom: 15px solid #fb6f92; /* clip-path generator - https://bennettfeely.com/clippy/ */
+    clip-path: polygon(0px 25px, 26px 0px, calc(60% - 25px) 0px, 60% 25px, 100% 25px, 100% calc(100% - 10px), calc(100% - 15px) calc(100% - 10px), calc(80% - 10px)  calc(100% - 10px), calc(80% - 15px) calc(100% - 0px), 10px  calc(100% - 0px), 0% calc(100% - 10px));
+    background-color: #fb6f92;
+    margin-bottom: 30px;
+  }
+
+  header.cyberpunk {
+    border: 30px solid #010203;
+    border-left: 5px solid #010203;
+    border-right: 5px solid #010203;
+    border-bottom: 15px solid #010203;
+    clip-path: polygon(0px 0px, 26px 0px, calc(60% - 25px) 0px, 60% 0px, 100% 0px, 100% calc(100% - 10px), calc(100% - 15px) calc(100% - 10px), calc(80% - 10px)  calc(100% - 10px), calc(80% - 15px) calc(100% - 0px), 10px  calc(100% - 0px), 0% calc(100% - 10px));
+    background-color: #010203;
+  }
+
+  footer.cyberpunk {
+    border: 30px solid purple;
+    border-left: 5px solid purple;
+    border-right: 5px solid purple;
+    border-bottom: 15px solid purple;
+    clip-path: polygon(0px 25px, 26px 0px, calc(60% - 25px) 0px, 60% 25px, 100% 25px, 100% 100%, calc(100% - 15px) 100%, calc(80% - 10px)  100%, calc(80% - 15px) 100% , 10px  calc(100% - 0px), 0% 100%);
+    background-color: purple;
+    margin-top: 30px;
+  }
+
+  /* Section */
+  section.cyberpunk {
+    background-color: var(--purple-color);
+    color: #fb6f92;
+    padding: 60px 60px;
+    position: relative;
+    margin-top: -1px;
+    margin-bottom: 30px;
   }
 
   h1.cyberpunk {
@@ -45,6 +136,22 @@ h1.cyberpunk:before { /* ":before" cria um pseudo-elemento que é o primeiro fil
     height: 10px;
     background-color: #000;
     clip-path: polygon(0px 0px, 85px 0px, 90px 5px, 100% 5px, 100% 6px, 85px 6px, 80px 10px, 0px 10px);
+}
+
+/* Cria a animação "hxafter" */
+@keyframes hxafter {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  51% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* Estiliza um cursor intermitente */
@@ -90,7 +197,7 @@ h1.cyberpunk:after {
 /* Aplica a animação "glitched" para o texto do parágrafo */
 p.cyberpunk.glitched, 
 h1.cyberpunk.glitched {
-  animation-name: '';
+  animation-name: glitched;
   animation-duration: calc(var(--glitched-duration) * 1.4);
   animation-iteration-count: infinite;
   animation-timing-function: linear;
@@ -137,10 +244,39 @@ h1.cyberpunk.glitched {
 
 /* Aplica a animação "beforeglitched" para o texto do parágrafo */
 h1.cyberpunk.glitched:before {
-  animation-name: beforeglitched;
+  animation-name: var(--glitched-animation, beforeglitched);
   animation-duration: calc(var(--glitched-duration) * 2);
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+}
+
+@keyframes nothing {
+
+  0% {
+    transform: skew(0deg);
+  }
+  10% {
+    transform: skew(0deg);
+  }
+  11% {
+    transform: skew(0deg);
+  }
+  50% {
+    transform: skew(0deg);
+  }
+  51% {
+    transform: skew(0deg);
+  }
+  59% {
+    transform: skew(0deg);
+  }
+  60% {
+    transform: skew(0deg);
+  }
+  100% {
+    transform: skew(0deg);
+  }
+  
 }
 
 /* Estiliza a Scrollbar */
